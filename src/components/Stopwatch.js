@@ -3,7 +3,7 @@ import { Alert, Button, StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 /* Numerical display */
-class Display extends React.Component {
+/*class Display extends React.Component {
   render() {
     return(
       <View>
@@ -11,9 +11,9 @@ class Display extends React.Component {
       </View>
     )
   }
-}
+}*/
 /* Button that starts/stops the timer */
-class BtnStartStopTime extends React.Component {
+/*class BtnStartStopTime extends React.Component {
   constructor() {
     super();
     this.state = {timeIsRunning: false};
@@ -28,7 +28,7 @@ class BtnStartStopTime extends React.Component {
 }
 BtnStartStopTime.propTypes = {
   pressHandler: React.PropTypes.func,
-};
+};*/
 
 
 
@@ -45,28 +45,11 @@ export class Stopwatch extends React.Component {
     };
   }
 
-  render(){
-    const display = <Display timeToDisplay={this.state.timeToDisplay} />
-    const btnStartStopTime = <BtnStartStopTime pressHandler={this.btnPressHandler.bind(this)} />
-
-    return (
-      <View style={styles.stopwatch}>
-        { display }
-        { btnStartStopTime }
-        <Text style={{marginTop:10}}> {this.state.timeIsRunning ? "COUNTING" : "PAUSED"} </Text>
-      </View>
-    )
-  }
-
   btnPressHandler(){
     this.state.timeIsRunning ? this._stopWatch() : this._startWatch();
   }
 
   _startWatch() {
-    this.setState({
-      timeIsRunning : true
-    });
-
     this.startTime = Date.now();
 
     this.watchInterval = setInterval(
@@ -78,6 +61,9 @@ export class Stopwatch extends React.Component {
         });
       }, 300
     );
+    this.setState({
+      timeIsRunning : true
+    });
   }
   _stopWatch(){
     clearInterval(this.watchInterval);
@@ -103,6 +89,23 @@ export class Stopwatch extends React.Component {
     seconds < 10 ? seconds = "0"+seconds : seconds;
     return hours + ":" + minutes + ":" + seconds;
   }
+
+  render(){
+    //const display = <Display timeToDisplay={this.state.timeToDisplay} />
+    //const btnStartStopTime = <BtnStartStopTime pressHandler={this.btnPressHandler.bind(this)} />
+
+    return (
+      <View style={styles.stopwatch}>
+        <Text style={styles.display}>{this.state.timeToDisplay}</Text>
+
+        <View style={styles.buttonContainer}>
+          <Button title="START / STOP" onPress={this.btnPressHandler.bind(this)} />
+        </View>
+        <Text style={{marginTop:10}}> {this.state.timeIsRunning ? "COUNTING" : "PAUSED"} </Text>
+      </View>
+    )
+  }
+
 }
 
 

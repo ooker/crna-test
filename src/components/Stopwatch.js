@@ -1,36 +1,6 @@
 import React from 'react';
-import { Alert, Button, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { CrossOSButton } from './ui/CrossOSButton.js';
-//import PropTypes from 'prop-types';
-
-/* Numerical display */
-/*class Display extends React.Component {
-  render() {
-    return(
-      <View>
-        <Text style={styles.display}>{ this.props.timeToDisplay }</Text>
-      </View>
-    )
-  }
-}*/
-/* Button that starts/stops the timer */
-/*class BtnStartStopTime extends React.Component {
-  constructor() {
-    super();
-    this.state = {timeIsRunning: false};
-  }
-  render(){
-    return (
-      <View style={styles.buttonContainer}>
-        <Button title="START / STOP" onPress={this.props.pressHandler} />
-      </View>
-    )
-  }
-}
-BtnStartStopTime.propTypes = {
-  pressHandler: React.PropTypes.func,
-};*/
-
 
 
 export class Stopwatch extends React.Component {

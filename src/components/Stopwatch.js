@@ -1,6 +1,7 @@
 import React from 'react';
 import { Alert, Button, StyleSheet, Text, View } from 'react-native';
-import PropTypes from 'prop-types';
+import { CrossOSButton } from './ui/CrossOSButton.js';
+//import PropTypes from 'prop-types';
 
 /* Numerical display */
 /*class Display extends React.Component {
@@ -40,7 +41,7 @@ export class Stopwatch extends React.Component {
 
     this.state = {
       timeIsRunning: false,
-      timeToDisplay : "0:00:00",
+      timeToDisplay : "00:00:00",
       timeTotal : 0
     };
   }
@@ -54,12 +55,12 @@ export class Stopwatch extends React.Component {
 
     this.watchInterval = setInterval(
       () => {
-        var timeNow = Date.now();
-        var timeDifference = timeNow - this.startTime;
+        let timeNow = Date.now();
+        let timeDifference = timeNow - this.startTime;
         this.setState({
           timeToDisplay : this._getTime(this.state.timeTotal+timeDifference)
         });
-      }, 300
+      }, 200
     );
     this.setState({
       timeIsRunning : true
@@ -99,7 +100,8 @@ export class Stopwatch extends React.Component {
         <Text style={styles.display}>{this.state.timeToDisplay}</Text>
 
         <View style={styles.buttonContainer}>
-          <Button title="START / STOP" onPress={this.btnPressHandler.bind(this)} />
+          {/*<Button title="START / STOP" onPress={this.btnPressHandler.bind(this)} />*/}
+        <CrossOSButton raised label={this.state.timeIsRunning ? "STOP" : "START"} onPress={this.btnPressHandler.bind(this)} />
         </View>
         <Text style={{marginTop:10}}> {this.state.timeIsRunning ? "COUNTING" : "PAUSED"} </Text>
       </View>

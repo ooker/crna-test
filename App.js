@@ -47,12 +47,10 @@ const AppNavigator = StackNavigator({
 
 export default class App extends React.Component {
   render() {
-    //const stopwatch = <Stopwatch />
     return (
       <View style={styles.container} >
         <View style={{height:24,width:"100%",backgroundColor:"#777"}}></View>
-        <AppNavigator style={{ width:300 }}/>
-
+        <AppNavigator style={{ width:"100%" }}/>
       </View>
     );
   }
